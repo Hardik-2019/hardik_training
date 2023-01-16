@@ -1,0 +1,46 @@
+1.Create an employee table with 5 records
+2.Create a view for empcode,designation,location from base table
+3.Delete one record from the view and check whether I is updated from base table
+4.Delete one record from base table and check if view is updated
+5.Update designation of emptable and check if it is updated in the view
+6.Create another view qview with all employees from pune or Mumbai
+7.Display view
+
+SOLUTIONS:
+
+FOR SIMPLE VIEW
+
+Create table emptable( emp¬_code integer, name varchar(50), age integer, designation varchar(50), location varchar(50));
+
+create view empview as select emp_code, designation, location from emptable ;
+
+delete from empview where emp_code = 103;
+select * from emptable;
+
+delete from emptable where emp_code = 102;
+select * from empview;
+
+update emptable set designation = 'Developer' where emp_code = 101;
+select * from empview;
+
+create view qview as select * from employees where location='Pune' or location=’Mumbai’;
+
+select * from qview;
+
+FOR MATERIALIZED VIEW
+
+create materialized view empview as select emp_code, designation, location from emptable ;
+
+delete from empview where emp_code = 103;
+select * from emptable;
+
+delete from emptable where emp_code = 102;
+select * from empview;
+
+update emptable set designation = 'Developer' where emp_code = 101;
+select * from empview;
+
+create materialized view qview as select * from employees where location='Pune' or location=’Mumbai’;
+
+select * from qview;
+
