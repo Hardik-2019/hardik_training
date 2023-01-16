@@ -1,0 +1,46 @@
+1.	Create the Below Table Structure with Conditions :
+EmpCode	Name	Designation	Age	Salary	Email
+					
+					
+2.	Put Conditions on above table:
+o	Empcode Should Not be Duplicate & Blank  - Primary Key ( Key Field : No Blank, No Duplicate)
+o	Name Should not be blank – Not Null
+o	By Default the Designation is STAFF – Default 
+o	//Age should be between 20 and 60 – Check 
+o	//Salary Should not be less than 5000 and salary should not be greater than 90000  check
+o	Email should not be blank and Duplicate : Unique
+
+3.	Insert 5 different records in the table 
+4.	Create View for the employee getting salary more than 50000
+5.	Create Procedure to  add location field in the given table
+
+Solution:
+
+CREATE TABLE emptable(
+	empcode integer PRIMARY KEY NOT NULL,
+	name varchar(50) NOT NULL,
+	age integer CHECK(age>20 and age<60),
+	salary integer CHECK(salary>5000 and salary<90000),
+	email varchar(50) UNIQUE NOT NULL
+);
+
+ALTER TABLE emptable ADD CONSTRAINT pkey PRIMARY KEY(emp_code);
+ALTER TABLE emptable ADD CONSTRAINT nn NOT NULL(emp_code);
+ALTER TABLE emptable ADD CONSTRAINT check1 CHECK(age>20 and age<60);
+ALTER TABLE emptable ADD CONSTRAINT check2 CHECK(salary>5000 and salary<90000);
+ALTER TABLE emptable ADD CONSTRAINT uniq UNIQUE(email);
+
+
+INSERT INTO emptable (empcode,name,age,salary,email) values (2000115,'XYZ',25,75000,’xya@gmail.com');
+(2000116,'Manan',22,25000,’abc@gmail.com’),
+(2000117,'Prateek',25,35000,'asd@gmail.com'),
+(2000118,'Saransh',31,18000,’a@gmail.com'),
+(2000119,'Pooja',29,10000,'b@gmail.coms');
+
+CREATE VIEW view1 as SELECT * from emptable where salary>50000;
+
+ALTER TABLE emptable ADD COLUMN location varchar(50);
+UPDATE emptable set location=’Pune’;
+
+
+
