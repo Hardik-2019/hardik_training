@@ -1,0 +1,46 @@
+
+Based On the below Table structure 
+
+create table Employee
+(
+EmpId varchar(10) primary key pk1,
+Name varchar(30) NOT NULL,
+salary number(10),
+location varchar(40),
+Phone number(10),
+Designation varchar(20)
+)
+
+Write the SQL Query For the Below Tasks using created table :
+
+1. Show the EMP details with EMPID, PHONE and salary
+2. Show All employee have Location either Delhi or Mombai
+3. Insert 2 more records without Salary and Location
+4. Show the Employee getting salary between 20000 and 40000
+5. Show the Employee EMPID, Name and Salary getting the salary<40000
+6. Show the list of employee Getting the salary>40000 and location is
+   either from mumbai or Delhi
+7. Show the List Of Employee name starts from S
+8. Show the Name and Phone Number of Employee not from Mumbai
+9. Show the Name of the Employee Name ending with 'SH'
+10. Show the Name, Email & salary of the Employee getting salary>4000 and Name not starts from A
+11. Update 10% of the salary who getting the salary>40000
+    
+   update emptabe
+   set salary=salary+salary*10/100 where salary>4000
+
+12. Delete all employee from the Employee table who getting the salary>90000
+
+SOLUTIONS
+1.	Select empid, phone, salary from employee;
+2.	Select * from employee where location in (‘Delhi’,’Mumbai’);
+3.	Insert into employee(empid,name,phone,designation) values( 101, ‘Hardik’ , 7014012345, ‘Developer’ ) , ( 102, ‘Ankit’ , 7014012355, ‘Developer’ );
+4.	Select * from employee where salary between (20000,40000);
+5.	Select empid, name, salary from employee where salary<40000;
+6.	Select * from employee where salary>40000 and location in (‘Mumbai’,’Delhi’);
+7.	Select * from employee where name like “S%”;
+8.	Select name, phone from employee where location != ‘Mumbai’;
+9.	Select * from employee where name like “%SH”;
+10.	Select name, email, salary from employee where salary>400 and name not like “A%”;
+11.	update employee set salary=salary+salary*10/100 where salary>4000;
+12.	delete from employee where salary>90000;
