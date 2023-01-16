@@ -1,0 +1,121 @@
+TASK 1
+Joins:
+create table table1(
+id int,
+salary int,
+location varchar(30));
+
+create table table2(
+id int,
+salary int,
+location varchar(30));
+
+select * from table1;
+select * from table2;
+
+select * from table1
+inner join table2
+on table1.location=table2.location;
+
+select * from table1
+left outer join table2
+on table1.location=table2.location;
+
+select * from table1
+right outer join table2
+on table1.location=table2.location;
+
+select * from table1
+full outer join table2
+on table1.location=table2.location
+
+
+
+TASK 2
+PostgreSQL Basic Simple
+
+1. Write a query to display the names (first_name, last_name) using an alias name “First Name", "Last Name".
+Create  Sample table: employees
+EMPLOYEE_ID | FIRST_NAME  | LAST_NAME   | EMAIL    | PHONE_NUMBER       | HIRE_DATE  | JOB_ID     | SALARY   | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
+
+
+
+
+2. Write a query to get a unique department ID from employe table.
+Sample table: employees
+
+3. Write a query to get the details of all employees from the employee table in descending order by their first name.
+Sample table: employees
+
+4. Write a query to get the names (first_name, last_name), salary and 15% of salary as PF for all the employees.
+Sample table: employees
+
+5. Write a query to get the employee ID, names (first_name, last_name) and salary in ascending order according to their salary.
+
+6. Write a query to get the total salaries payable to employees.
+Sample table: employees
+
+7. Write a query to get the maximum and minimum salary paid to the employees.
+Sample table: employees
+
+
+8. Write a query to get the average salary and number of employees are working.
+Sample table: employees
+
+
+9. Write a query to get the number of employees working with the company.
+Sample table: employees
+
+
+10. Write a query to get the unique number of designations available in the employees table.
+Sample table: employees
+
+
+Answers:
+
+create table employees1(
+	employee_id integer,
+	first_name varchar(20),
+	last_name varchar(20),
+	email varchar(20),
+	phonenumber integer,
+	hiredate date,
+	job_id integer,
+	salary integer,
+	comission_pct varchar(20),
+	manager_id integer,
+	department_id integer
+);
+
+insert into employees1 values(102,'Arun','Kumar','a331@gmail.com',72248976,'2001-08-01',100, 20050,'20',101,100);
+select first_name as "First Name", last_name as "Last Name" from employees1;
+
+select distinct(department_id) from employees1;
+
+select * from employees1 order by first_name desc;
+
+select first_name, last_name, salary , salary*.15 as "PF" from employees1;
+
+select employee_id, first_name, last_name, salary from employees1 order by salary;
+
+select sum(salary) from employees1;
+
+select max(salary), min(salary) from employees1;
+
+select avg(salary), count(*) from employees1;
+
+select count(*) from employees1
+
+select distinct(manager_id) from employees1;
+
+
+TASK4: Creating Indexes
+
+1.Create index index1 on empcode
+2.Create index index2 on empcode,name
+
+Answers:
+
+create index index1 on employees1(employee_id);
+create index index2 on employees1(employee_id,first_name);
+
